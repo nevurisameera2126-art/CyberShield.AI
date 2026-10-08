@@ -1,0 +1,6 @@
+{
+  "name": "CyberShield AI - Security Awareness & Scam Detector",
+  "description": "Beginner-friendly cybersecurity tool for scanning suspicious messages, analyzing phishing URLs, and mastering digital defense basics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,33 @@
+{
+  "entities": [
+    {
+      "name": "User",
+      "description": "User profile with minimal collected data (Google auth UID, displayName, email). Passwords and phone numbers are never stored.",
+      "fields": [
+        { "name": "uid", "type": "string", "description": "Unique Google user ID" },
+        { "name": "email", "type": "string", "description": "User email address for account identification" },
+        { "name": "displayName", "type": "string", "description": "Display name" },
+        { "name": "photoURL", "type": "string", "description": "Profile picture URL" },
+        { "name": "createdAt", "type": "number", "description": "Timestamp when account was created" },
+        { "name": "privacySettings", "type": "object", "description": "User privacy and ephemeral storage preferences" }
+      ]
+    },
+    {
+      "name": "Scan",
+      "description": "Redacted scan record stored inside user's private subcollection. Raw sensitive PII, passwords, and OTPs are stripped before persisting.",
+      "fields": [
+        { "name": "scanId", "type": "string", "description": "Unique scan ID" },
+        { "name": "type", "type": "string", "description": "Scan type: message or url" },
+        { "name": "snippet", "type": "string", "description": "Redacted snippet for identification" },
+        { "name": "riskScore", "type": "number", "description": "Calculated threat score (0-100)" },
+        { "name": "verdict", "type": "string", "description": "Verdict label" },
+        { "name": "timestamp", "type": "number", "description": "Creation timestamp" }
+      ]
+    }
+  ],
+  "securityRules": {
+    "defaultAccess": "deny",
+    "userIsolation": "enforced",
+    "description": "Users may only read, write, or delete documents within their own /users/{userId} path. Cross-user access is denied."
+  }
+}
